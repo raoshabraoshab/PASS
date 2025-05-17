@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VPN PowerShell Code</title>
+  <style>
+    body {
+      background-color: #f5f5f5;
+      font-family: 'Courier New', monospace;
+      padding: 40px;
+    }
+    pre {
+      background-color: #1e1e1e;
+      color: #dcdcdc;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 15px;
+      line-height: 1.5;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>VPN PowerShell Script</h2>
+
+  <pre>
+$VPN_NAME = 'VPN' 
+$SERVER_ADDRESS = 'uk205.vpnbook.com'
+$USERNAME = 'vpnbook'
+$PASSWORD = 'huba7re'
+
+# Create the VPN connection
+Add-VpnConnection -Name $VPN_NAME -ServerAddress $SERVER_ADDRESS -TunnelType PPTP -RememberCredential -PassThru
+
+# Connect to the VPN
+rasdial $VPN_NAME $USERNAME $PASSWORD
+
+
+$VPN_NAME = 'VPN'
+$SERVER_ADDRESS = 'DE20.vpnbook.com'
+$USERNAME = 'vpnbook'
+$PASSWORD = 'huba7re'
+
+# Create the VPN connection
+Add-VpnConnection -Name $VPN_NAME -ServerAddress $SERVER_ADDRESS -TunnelType PPTP -RememberCredential -PassThru
+
+# Connect to the VPN
+rasdial $VPN_NAME $USERNAME $PASSWORD
+
+
+# Define the name of the VPN connection to remove
+$VPN_NAME = 'VPN'
+
+# Remove the VPN connection
+Remove-VpnConnection -Name $VPN_NAME -Force
+  </pre>
+
+</body>
+</html>
